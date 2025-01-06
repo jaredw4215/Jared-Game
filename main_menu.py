@@ -9,7 +9,7 @@ class MainMenu:
         self.window = window
         
         self.title_pos = (int(window.get_width() * 0.5), int(window.get_height() * 0.1))
-        self.title = Text("The Light Child: Prophecy",'Showcard Gothic',self.title_pos,80,(255,0,0))
+        self.title = Text("The Game",'Showcard Gothic',self.title_pos,80,(255,0,0))
                 
         self.start_button_pos = (int(window.get_width() * 0.5), int(window.get_height() * 0.4))
         self.quit_button_pos = (int(window.get_width() * 0.5), int(window.get_height() * 0.8))

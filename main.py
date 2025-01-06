@@ -5,6 +5,8 @@ import pygame
 from pygame.locals import *
 import sys
 from main_menu import MainMenu
+from person import Person
+from image_loader import SpriteSheetLoader
 
 pygame.init()
 FPS = 30
@@ -14,14 +16,21 @@ SCREEN_WIDTH = info.current_w * 0.8
 SCREEN_HEIGHT = info.current_h * 0.8
 
 window = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
-pygame.display.set_caption("The Light Child: Prophecy")
+pygame.display.set_caption("My Game")
 main_menu = MainMenu(window)
 display_menu = True
+
+walk_imgs = SpriteSheetLoader().load("__assets__/player/walk/",(300,300))
+idle_imgs = SpriteSheetLoader().load("__assets__/player/idle/",(300,300))
+player = Person(walk_imgs, idle_imgs, (SCREEN_WIDTH*0.5,SCREEN_HEIGHT*0.5))
 
 # Game Loop
 while True:
     if display_menu == True: main_menu.show()
-    else: window.fill((245,245,220))
+    else: 
+        window.fill((245,245,220))
+        player.draw(window)
+        player.move(window)
     
     for event in pygame.event.get():
         if event.type == QUIT:
